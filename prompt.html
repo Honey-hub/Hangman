@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+</head>
+
+<body>
+    <script>
+        //  let name = prompt("What's Your name ");
+        //  alert('Hello' + name);
+        //  let ready=confirm ('Are you ready to play this game')
+        //  if (ready) {
+        //      alert('lets Go');
+        //  } else {
+        //      alert ('See you next time');
+        //      break;
+        //  }
+
+        let words = ["asus", "rog", "intel", "getforce"];
+        let word = words[Math.floor(Math.random() * words.length)];
+
+        let answerArray = [];
+        for (let i = 0; i < word.length; i++) {
+            answerArray[i] = "-";
+        }
+        let incorrectwords= [];
+
+        let remainingLetters = word.length;
+        while (remainingLetters > 0) {
+
+            alert(answerArray.join(" ")); 
+            // Game code
+            let guess = prompt("Guess a letter or click cancel to stop playing.");
+            if (guess === null) {
+                break;
+            } else if (guess.length !== 1) {
+
+                alert("please enter a single letter");
+            } else {
+                for (let j = 0; j < word.length; j++) {
+                    if (word[j] === guess) {
+                        answerArray[j] = guess;
+                        remainingLetters--;
+                    }
+                }
+            }
+
+        }
+  
+        alert(answerArray.join(" "));
+        alert("Good job! The answer was " + word);
+
+       </script>
+
+</body>
+
+</html>
